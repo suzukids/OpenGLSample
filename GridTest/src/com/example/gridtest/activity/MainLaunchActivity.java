@@ -1,21 +1,17 @@
 package com.example.gridtest.activity;
 
-import com.example.gridtest.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+
+import com.example.gridtest.R;
 
 /**
  * メイン画面 各画面への振り分けを行うメイン画面
  * 
  */
 public class MainLaunchActivity extends BaseActivity {
-
-    Button mButtonCube;
-    Button mButtonRotateTile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +20,12 @@ public class MainLaunchActivity extends BaseActivity {
         setContentView(R.layout.main_launch);
 
         mActivity = this;
-        mButtonCube = (Button) findViewById(R.id.button_cube);
-        mButtonRotateTile = (Button) findViewById(R.id.button_rotate_tile);
 
         // クリックイベントの設定
         MainLaunchClickListener listener = new MainLaunchClickListener();
-        mButtonCube.setOnClickListener(listener);
-        mButtonRotateTile.setOnClickListener(listener);
+        findViewById(R.id.button_cube).setOnClickListener(listener);
+        findViewById(R.id.button_rotate_tile).setOnClickListener(listener);
+        findViewById(R.id.button_splite).setOnClickListener(listener);
 
     }
 
@@ -48,6 +43,11 @@ public class MainLaunchActivity extends BaseActivity {
             case R.id.button_rotate_tile:
                 // タイル回転画面へ遷移します.
                 intent = new Intent(mActivity, GLRotateTileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button_splite:
+                // スプライト表示画面へ遷移します.
+                intent = new Intent(mActivity, GLSpliteActivity.class);
                 startActivity(intent);
                 break;
             }

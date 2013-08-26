@@ -31,6 +31,27 @@ public class MyGLRotateTileRenderer extends MyGLBaseRenderer {
     private float mRotateY = 0.0f;
 
     @Override
+    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        super.onSurfaceCreated(gl, config);
+
+      // 背景色をクリア
+        gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        // ディザを無効化
+        gl.glDisable(GL10.GL_DITHER);
+        // テクスチャ機能ON
+        gl.glEnable(GL10.GL_TEXTURE_2D);
+        // 透明可能に
+        gl.glEnable(GL10.GL_ALPHA_TEST);
+        // ブレンド可能に
+        gl.glEnable(GL10.GL_BLEND);
+        gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+        // テクスチャの合成環境の設定.
+        gl.glTexEnvf(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
+        
+        mTile.setTexture(gl, mContext.getResources(), R.drawable.texture_doroid);
+    }
+
+    @Override
     public void onDrawFrame(GL10 gl) {
 
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
@@ -54,26 +75,5 @@ public class MyGLRotateTileRenderer extends MyGLBaseRenderer {
 
         // タイルを描画.
         mTile.draw(gl);
-    }
-
-    @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        super.onSurfaceCreated(gl, config);
-
-      // 背景色をクリア
-        gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        // ディザを無効化
-        gl.glDisable(GL10.GL_DITHER);
-        // テクスチャ機能ON
-        gl.glEnable(GL10.GL_TEXTURE_2D);
-        // 透明可能に
-        gl.glEnable(GL10.GL_ALPHA_TEST);
-        // ブレンド可能に
-        gl.glEnable(GL10.GL_BLEND);
-        gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-        // テクスチャの合成環境の設定.
-        gl.glTexEnvf(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
-        
-        mTile.setTexture(gl, mContext.getResources(), R.drawable.texture_doroid);
     }
 }

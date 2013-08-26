@@ -33,6 +33,11 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
-    </application>
+        <activity
+            android:name=".activity.GLSpliteActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        </application>
 
 </manifest>

@@ -12,8 +12,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/button_rotate_tile"
         android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/button_rotate_tile"
         android:text="cubeTest" />
     
     <Button
@@ -24,4 +25,15 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/button_cube"
         android:text="rotateTileTest" />
+
+    <Button
+        android:id="@+id/button_splite"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_rotate_tile"
+        android:layout_alignRight="@+id/button_rotate_tile"
+        android:layout_below="@+id/button_rotate_tile"
+        android:text="spliteTest" />
+
 </RelativeLayout>
